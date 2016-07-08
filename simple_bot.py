@@ -7,7 +7,7 @@ client = discord.Client()
 
 def assign_region(message):
     region = message.content.replace('!region', '')
-    client.send_message(region)
+    client.send_message(message.channel, region)
 
 
 @client.async_event
