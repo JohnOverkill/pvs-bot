@@ -4,18 +4,17 @@ import discord
 bot = discord.Client()
 
 @asyncio.coroutine
-def assign_region(message):
-    region = message.content.strip('!region')
+def assign_euw(message):
     author = message.author
-    yield from bot.send_message(message.channel, "Hello {1}, you are in {0}" .format(region, author))
+    role = discord.utils.get(message.server.roles, name='euw')
+    yield from bot.add_roles(author, role)
 
 
 @bot.event
 @asyncio.coroutine
 def on_message(message):
-    #author = message.author
-    if message.content.startswith('!region'):
-        yield from assign_region(message)
+    if message.content.startswith('+!euw'):
+        yield from assign_euw(message)
 
 @bot.event
 @asyncio.coroutine
