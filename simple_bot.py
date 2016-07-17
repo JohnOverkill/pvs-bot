@@ -1,19 +1,28 @@
 # -*- coding: utf-8 -*-
 import asyncio
 import discord
-client = discord.Client()
+bot = discord.Client()
+
+@asyncio.coroutine
+def assign_region(message):
+    region = message.content.strip('!region')
+    author = message.author
+    yield from bot.send_message(message.channel, "Hello {1}, you are in {0}" .format(region, author))
 
 
-#def assign_region(message):
-#    region = message.content.strip('!region')
-#    client.send_message(message.channel, region)
-
-
-@client.event
+@bot.event
 @asyncio.coroutine
 def on_message(message):
-#    author = message.author
+    #author = message.author
     if message.content.startswith('!region'):
-         yield from client.send_message(message.channel, "Hi there")
+        yield from assign_region(message)
 
-client.run('MTk5NDY2MzA2ODc2MDgwMTI4.CmBsyg.pcJmTTObQn-cbDZcgGWRdXTjUq8')
+@bot.event
+@asyncio.coroutine
+def on_ready():
+        print('Logged in as')
+        print(bot.user.name)
+        print(bot.user.id)
+        print('------')
+
+bot.run('MTk5NDY2MzA2ODc2MDgwMTI4.CmBsyg.pcJmTTObQn-cbDZcgGWRdXTjUq8')
