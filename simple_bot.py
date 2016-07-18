@@ -225,9 +225,8 @@ def remove_supp(message):
 @asyncio.coroutine
 def on_message(message):
 # servers
-    if message.content.startswith('!help'):
-        yield from bot.send_message(message.channel, "You can add / remove roles via +!role and -!role. availble roles are NA,EUW,EUNE,OCE,LAS,LAN,BR,dia,plat,gold,silver,bronze,top,jungle,mid,adc,supp."
-
+    if message.content.startswith('?!help'):
+        yield from bot.send_message(message.channel, "You can add / remove roles via +!role and -!role. Available roles are 'NA', 'EUW', 'EUNE', 'OCE', 'LAS', 'LAN', 'BR', 'dia', 'plat', 'gold', 'silver', 'bronze', 'top', 'jungle', 'mid', 'adc' and  'supp'.")
     elif message.content.startswith('+!EUW'):
         yield from add_euw(message)
 
@@ -246,7 +245,7 @@ def on_message(message):
     elif message.content.startswith('-!NA'):
         yield from remove_na(message)
 
-    if message.content.startswith('+!OCE'):
+    elif message.content.startswith('+!OCE'):
         yield from add_oce(message)
 
     elif message.content.startswith('-!OCE'):
@@ -271,7 +270,7 @@ def on_message(message):
         yield from remove_br(message)
 
 # ranks
-    if message.content.startswith('+!dia'):
+    elif message.content.startswith('+!dia'):
         yield from add_dia(message)
 
     elif message.content.startswith('-!dia'):
@@ -289,7 +288,7 @@ def on_message(message):
     elif message.content.startswith('-!gold'):
         yield from remove_gold(message)
 
-    if message.content.startswith('+!silver'):
+    elif message.content.startswith('+!silver'):
         yield from add_silver(message)
 
     elif message.content.startswith('-!silver'):
