@@ -25,4 +25,4 @@ def on_ready():
         print(bot.user.id)
         print('------')
 
-bot.run('MTk5NDY2MzA2ODc2MDgwMTI4.CmBsyg.pcJmTTObQn-cbDZcgGWRdXTjUq8')
+bot.run('Token')
